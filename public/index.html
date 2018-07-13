@@ -1,0 +1,70 @@
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6VAggfoSoEWHB_ScSYbaqk2rYNXaPSCs",
+    authDomain: "helseapp-85467.firebaseapp.com",
+    databaseURL: "https://helseapp-85467.firebaseio.com",
+    projectId: "helseapp-85467",
+    storageBucket: "helseapp-85467.appspot.com",
+    messagingSenderId: "584397722760"
+  };
+  firebase.initializeApp(config);
+
+  function saveFirebase() {
+    const fb = firebase.database().ref();
+    //get field values
+    userName = document.getElementById("brukerNavn").value;
+    userId = document.getElementById("brukerId").value;
+    data_to_save = { userId, userName };
+    fb.child("users/").set(data_to_save);
+  }
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>The magnificent helseApp</title>
+  <meta name="description" content="The amazing helseApp">
+  <meta name="author" content="Yes">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>HelseApp</h1>
+  <h4>-keep it healthy, stopid</h4>
+  <div id="inputContainer">
+    <input type="text" id="brukerNavn" required="" placeholder="Navnet til bruker" />
+    <input type="text" id="brukerId" required="" placeholder="Bruker Id" />
+    <button id="addder" type="button" onclick="saveFirebase(); changeText2()">Legg til bruker </button>
+    <p>Brukere:</p>
+    <ol id="listePlass"></ol>
+
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
+
+<script src="app.js"></script>
+</body>
+
+</html>
