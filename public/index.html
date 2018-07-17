@@ -34,7 +34,7 @@
   <h1>HelseApp</h1>
   <h4>-keep it healthy, stopid</h4>
   <div id="inputContainer">
-    <input type="text" id="brukerNavn" required="" placeholder="Navnet til bruker" />
+    <input type="text" id="brukerNavn" required="" placeholder="Navnet til bruker"/>
     <input type="text" id="brukerId" required="" placeholder="Bruker Id" />
     <button id="addder" type="button" onclick="saveFirebase(); changeText2()">Legg til bruker </button>
     <p>Brukere:</p>
@@ -63,8 +63,36 @@
       }
     });
   </script>
-
 <script src="app.js"></script>
 </body>
+<footer id= "bunnen"> 
+
+  <p id="para">dette er min paragraf, jepp</p>
+  <h1>insertAdjacentHTML(), insertAdjacentElement(),insertAjacentText()</h1>
+  <h2>Using positions: beforebegin, afterbegin, beforeend, afterend</h2>
+</footer>
+
+<script>
+  let span = document.createElement('span');
+  span.textContent = "This is a paragraph"; 
+  let html = '<span>HTML span in a string</span>';
+  let txt = 'this is just some text ';
+  let p = document.querySelector("#para"); 
+
+  p.insertAdjacentElement('beforebegin', span);
+  p.insertAdjacentElement('afterend', span);
+
+  p.insertAdjacentHTML('beforebegin', html);
+  p.insertAdjacentHTML('afterend', html); 
+  document.body.insertAdjacentElement('afterbegin', span);
+
+
+
+  p.insertAdjacentText('afterbegin', txt);
+  p.insertAdjacentText('beforebegin', txt);
+  
+
+
+  </script>
 
 </html>
